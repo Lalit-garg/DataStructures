@@ -38,7 +38,7 @@ node<T> *head;
 
 		void push(T element)
 		{
-			node<T> *temp(element);
+			node<T> *temp=new node<T>(element);
 			temp->next=head;
 			head=temp;
 			size++;
@@ -46,14 +46,17 @@ node<T> *head;
 
 		T pop()
 		{
-			T x;
 			if(head==NULL)
 			{
 				cout<<"Stack is Empty";
+				return ;
 			}
 			else{
+				T x;
 				x=head->data;
+				node<T> *temp=head;
 				head=head->next;
+				delete temp;
 				size--;
 				return x;
 			}
@@ -67,7 +70,7 @@ node<T> *head;
 int main()
 {
 	Stack<int> s;
-	cout<<s.isEmpty();
+	cout<<s.isEmpty()<<endl;
 	s.push(10);
 	s.push(20);
 	s.push(30);
